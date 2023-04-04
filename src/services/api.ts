@@ -30,15 +30,10 @@ interface ApiResponse {
 export async function shortenUrl(url: string): Promise<ShortenedUrl> {
   try {
     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`)
-
-    if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.statusText}`)
-    }
-
     const data: ApiResponse = await response.json()
 
     if (!data.ok) {
-      throw new Error(`API error: ${data.error} (code: ${data.error_code})`)
+      throw new Error(`Error code: ${data.error_code}`)
     }
 
     if (data.result) {
@@ -54,8 +49,9 @@ export async function shortenUrl(url: string): Promise<ShortenedUrl> {
     }
   } catch (error) {
     // Ensure the error message is a string, falling back to a generic message
+    console.log(error)
     const errorMessage =
       error instanceof Error ? error.message : 'An unexpected error occurred'
-    throw new Error(`Error while shortening URL: ${errorMessage}`)
+    throw new Error(`Error while shortening URL. ${errorMessage}`)
   }
 }
