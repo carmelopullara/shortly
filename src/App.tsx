@@ -18,6 +18,7 @@ const App: React.FC = () => {
       <Wrapper>
         <Header />
         <Form />
+        <UrlList />
       </Wrapper>
     </ContextProvider>
   )
