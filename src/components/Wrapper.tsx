@@ -10,12 +10,8 @@ interface WrapperProps {
  */
 export const Wrapper: FC<WrapperProps> = ({ children }) => {
   return (
-    <section className="min-w-full min-h-screen grid place-content-center">
-      <div className="container mx-auto px-4">
-        <div className="md:min-w-[640px] sm:min-w-full max-w-full grid gap-8">
-          {children}
-        </div>
-      </div>
+    <section className="py-24">
+      <div className="flex flex-1 lg:w-2/3 xl:w-2/5 w-full px-7 mx-auto gap-4 flex-col">{children}</div>
     </section>
   )
 }

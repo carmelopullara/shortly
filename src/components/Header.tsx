@@ -4,8 +4,8 @@ import { FC } from 'react'
 export const Header: FC = () => {
   return (
     <header>
-      <h1 className="text-center text-2xl font-bold">
-        <span role="img" aria-label="label">
+      <h1 className="text-2xl font-bold text-slate-50 uppercase tracking-widest">
+        <span role="img" aria-label="label" className="mr-2">
           🏷️
         </span>{' '}
         Shortly
