@@ -1,4 +1,5 @@
 import React from 'react'
+import { Toaster } from 'react-hot-toast'
 import { ContextProvider } from './components/ContextProvider'
 import { Form } from './components/Form'
 import { Header } from './components/Header'
@@ -20,6 +21,7 @@ const App: React.FC = () => {
         <Form />
         <UrlList />
       </Wrapper>
+      <Toaster />
     </ContextProvider>
   )
 }
