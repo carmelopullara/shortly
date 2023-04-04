@@ -49,7 +49,6 @@ export async function shortenUrl(url: string): Promise<ShortenedUrl> {
     }
   } catch (error) {
     // Ensure the error message is a string, falling back to a generic message
-    console.log(error)
     const errorMessage =
       error instanceof Error ? error.message : 'An unexpected error occurred'
     throw new Error(`Error while shortening URL. ${errorMessage}`)
