@@ -40,6 +40,7 @@ export async function shortenUrl(url: string): Promise<ShortenedUrl> {
       const { result } = data
       return {
         code: result.code,
+        fullShortLink: result.full_short_link,
         shortLink: result.short_link,
         originalLink: result.original_link,
         timestamp: Date.now(),

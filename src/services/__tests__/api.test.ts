@@ -23,6 +23,7 @@ describe('shortenUrl', () => {
           code: 'test_code',
           short_link: 'https://shrtco.de/test',
           original_link: 'https://example.com',
+          full_short_link: 'https://shrtco.de/test',
         },
       })
     )
@@ -31,6 +32,7 @@ describe('shortenUrl', () => {
     const testUrl = 'https://example.com'
     const expectedResult: ShortenedUrl = {
       code: 'test_code',
+      fullShortLink: 'https://shrtco.de/test',
       shortLink: 'https://shrtco.de/test',
       originalLink: 'https://example.com',
       timestamp: expect.any(Number),
