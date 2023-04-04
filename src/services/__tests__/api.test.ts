@@ -43,15 +43,22 @@ describe('shortenUrl', () => {
 
   // Test case: should throw an error when the network response is not ok
   it('should throw an error when the network response is not ok', async () => {
-    // Mock a failed network response with a 400 status and 'Bad Request' status text
-    fetchMock.mockResponseOnce('', { status: 400, statusText: 'Bad Request' })
+    // Mock a failed network response with a 400 status and an error message
+    fetchMock.mockResponseOnce(
+      JSON.stringify({
+        ok: false,
+        error_code: 2,
+        error: 'Error: This is not a valid URL',
+      }),
+      { status: 400 }
+    )
 
     // Define the input URL that will cause a failed network response
     const invalidApiUrl = 'invalid-api-url'
 
     // Call the shortenUrl function and check if it throws the expected error
     await expect(shortenUrl(invalidApiUrl)).rejects.toThrowError(
-      'Error while shortening URL: Network response was not ok: Bad Request'
+      'Error while shortening URL. Error code: 2'
     )
   })
 })
