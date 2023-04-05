@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import { FC } from 'react'
 import { Clipboard, Link } from 'react-feather'
 import { toast } from 'react-hot-toast'
 import { ShortenedUrl } from '../state/context'
