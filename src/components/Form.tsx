@@ -15,9 +15,7 @@ interface FormValues {
 const URL_REGEX =
   /^(?:https?:\/\/)?(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
 
-/**
- * Validation schema for the URL input field.
- */
+// Validation schema for the URL input field.
 const urlValidationSchema: RegisterOptions = {
   required: { value: true, message: 'Please fill out this field' },
   pattern: { value: URL_REGEX, message: 'Please enter a valid URL' },
@@ -28,6 +26,7 @@ export const Form = () => {
   const [isLoading, setIsLoading] = useState(false)
   const { addShortenedUrl } = useShortenedUrlContext()
 
+  // Initialize the useForm hook with the form values.
   const {
     handleSubmit,
     register,
@@ -35,6 +34,7 @@ export const Form = () => {
     resetField,
   } = useForm<FormValues>()
 
+  // The submit handler for the form.
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     try {
       setIsLoading(true)
@@ -42,6 +42,7 @@ export const Form = () => {
       addShortenedUrl(url)
       resetField('url')
 
+      // Show a success toast when the URL is shortened.
       toast('Your shortened link is ready to use', {
         icon: '🎉',
         className: 'bg-slate-800 text-slate-100 text-sm',
@@ -54,8 +55,10 @@ export const Form = () => {
     }
   }
 
+  // Check if the URL input field has an error.
   const urlFieldHasError = errors.url?.message && errors.url.message.length > 0
 
+  // Compute the CSS classes for the input field based on its error state.
   const inputClasses = cx(
     'block bg-gray-800 relative w-full text-gray-100 p-4 rounded-l-sm placeholder:text-slate-400 text-sm border outline-1 focus:outline focus:outline-dotted',
     {
