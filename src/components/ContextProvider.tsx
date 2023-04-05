@@ -1,6 +1,6 @@
 import { FC, ReactNode, useCallback } from 'react'
-import { ShortenedUrl, ShortenedUrlContext } from '../state/context'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { ShortenedUrl, ShortenedUrlContext } from '../state/context'
 
 // Define the interface for ContextProviderProps to include children prop
 interface ContextProviderProps {
