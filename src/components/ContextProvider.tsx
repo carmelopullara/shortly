@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback } from 'react'
+import { FC, ReactNode, useCallback } from 'react'
 import { ShortenedUrl, ShortenedUrlContext } from '../state/context'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 
@@ -11,9 +11,7 @@ interface ContextProviderProps {
  * The ContextProvider component is responsible for providing the ShortenedUrlContext to its children.
  * It uses the useLocalStorage hook to store and manage the list of shortened URLs.
  */
-export const ContextProvider: React.FC<ContextProviderProps> = ({
-  children,
-}) => {
+export const ContextProvider: FC<ContextProviderProps> = ({ children }) => {
   const [shortenedUrls, setShortenedUrls] = useLocalStorage<ShortenedUrl[]>(
     'shortenedUrls',
     []

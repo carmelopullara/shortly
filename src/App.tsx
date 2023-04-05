@@ -1,4 +1,4 @@
-import React from 'react'
+import { FC } from 'react'
 import { Toaster } from 'react-hot-toast'
 import { ContextProvider } from './components/ContextProvider'
 import { Form } from './components/Form'
@@ -13,7 +13,7 @@ import { Wrapper } from './components/Wrapper'
  * the form for entering links and the list of saved links.
  */
 
-const App: React.FC = () => {
+const App: FC = () => {
   return (
     <ContextProvider>
       <Wrapper>
