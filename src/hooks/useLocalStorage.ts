@@ -8,7 +8,7 @@ import { useState, useEffect, Dispatch, SetStateAction } from 'react'
  * @returns {[T, Dispatch<SetStateAction<T>>]} A tuple with the state value and a setter function.
  */
 
-export function useLocalStorage<T>(
+export function useLocalStorage<T extends any>(
   key: string,
   initialValue: T
 ): [T, Dispatch<SetStateAction<T>>] {

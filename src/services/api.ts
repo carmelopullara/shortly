@@ -1,3 +1,4 @@
+import { parseErrorMessage } from '../utils/errorUtils'
 import { ShortenedUrl } from './../state/context'
 
 // ApiResponse interface represents the response coming from the shrtco.de API
@@ -50,8 +51,7 @@ export async function shortenUrl(url: string): Promise<ShortenedUrl> {
     }
   } catch (error) {
     // Ensure the error message is a string, falling back to a generic message
-    const errorMessage =
-      error instanceof Error ? error.message : 'An unexpected error occurred'
+    const errorMessage = parseErrorMessage(error)
     throw new Error(`Error while shortening URL. ${errorMessage}`)
   }
 }

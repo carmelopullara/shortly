@@ -1,10 +1,11 @@
-import { RegisterOptions, SubmitHandler, useForm } from 'react-hook-form'
 import cx from 'classnames'
 import { useState } from 'react'
-import { shortenUrl } from '../services/api'
-import { useShortenedUrlContext } from '../hooks/useShortenedUrlContext'
-import { ArrowRightCircle, Aperture } from 'react-feather'
+import { Aperture, ArrowRightCircle } from 'react-feather'
+import { RegisterOptions, SubmitHandler, useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useShortenedUrlContext } from '../hooks/useShortenedUrlContext'
+import { shortenUrl } from '../services/api'
+import { parseErrorMessage } from '../utils/errorUtils'
 
 interface FormValues {
   url: string
@@ -46,8 +47,7 @@ export const Form = () => {
         className: 'bg-slate-800 text-slate-100 text-sm',
       })
     } catch (error) {
-      const message =
-        error instanceof Error ? error.message : 'An unknown error occurred.'
+      const message = parseErrorMessage(error)
       setErrorMessage(message)
     } finally {
       setIsLoading(false)
