@@ -18,11 +18,22 @@ export const UrlItem: FC<UrlItemProps> = ({ url }) => {
    * Copies the shortened URL to the user's clipboard and shows a toast message.
    */
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(fullShortLink)
-    toast('URL successfully copied to clipboard', {
-      icon: '✅',
-      className: 'bg-slate-800 text-slate-100 text-sm',
-    })
+    navigator.clipboard.writeText(fullShortLink).then(
+      () => {
+        /* clipboard successfully set */
+        toast('URL successfully copied to clipboard', {
+          icon: '✅',
+          className: 'bg-slate-800 text-slate-100 text-sm',
+        })
+      },
+      () => {
+        /* clipboard write failed */
+        toast('An error occurred while copying the URL ', {
+          icon: '🚫',
+          className: 'bg-red-800 text-slate-100 text-sm',
+        })
+      }
+    )
   }
 
   return (
