@@ -19,17 +19,17 @@ export interface ShortenedUrlContextType {
 }
 
 // A default no-op function for addShortenedUrl that logs a warning
-// when it's called without a valid UrlDataProvider in the component tree.
+// when it's called without a valid ShortenedUrlContext in the component tree.
 const defaultAddShortenedUrl = (newUrl: ShortenedUrl) => {
   if (process.env.NODE_ENV !== 'production') {
     console.warn(
-      'Warning: addShortenedUrl() was called without a valid UrlDataProvider in the component tree.',
-      'Please ensure that your component is wrapped by a UrlDataProvider.'
+      'Warning: addShortenedUrl() was called without a valid ShortenedUrlContext in the component tree.',
+      'Please ensure that your component is wrapped by a ShortenedUrlContext.'
     )
   }
 }
 
-// Define the default value for UrlDataContext based on UrlDataContextValue
+// Define the default value for UrlDataContext based on ShortenedUrlContextType
 const defaultState: ShortenedUrlContextType = {
   shortenedUrls: [],
   addShortenedUrl: defaultAddShortenedUrl,
